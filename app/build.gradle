@@ -3,10 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-
 android {
+    namespace "com.solverai.gtoapp"
     compileSdk 33
-    namespace 'com.solverai.gtoapp'
+
     defaultConfig {
         applicationId "com.solverai.gtoapp"
         minSdk 21
