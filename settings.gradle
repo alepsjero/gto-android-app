@@ -1,2 +1,10 @@
-rootProject.name = 'GtoSolverAI'
-include ':app'
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "GtoSolverAI"
+include(":app")
