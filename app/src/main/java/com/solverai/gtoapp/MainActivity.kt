@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         addCardBtn.setOnClickListener {
             val rank = rankSpinner.selectedItem.toString()
             val suit = suitSpinner.selectedItem.toString()
-            val code = "${"$"}{rank}${"$"}{suit}"
+            val code = "${rank}${suit}"
             if (cardEntries.contains(code)) {
                 Toast.makeText(this, "Carta duplicada", Toast.LENGTH_SHORT).show()
             } else {
@@ -153,7 +153,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun parseQuickInput(input: String): List<String>? {
-        val cleaned = input.replace("\s+".toRegex(), "").uppercase()
+        val cleaned = input.replace("\\s+".toRegex(), "").uppercase()
         if (cleaned.length % 2 != 0) return null
         val result = mutableListOf<String>()
         val validRanks = setOf("A","K","Q","J","T","9","8","7","6","5","4","3","2")
@@ -178,10 +178,10 @@ class MainActivity : AppCompatActivity() {
                 val client = OkHttpClient.Builder().addInterceptor(logging).build()
                 val body = jsonPayload.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
                 val req = Request.Builder()
-                .url(API_URL)
-                .addHeader("x-api-key", apiKey)
-                .post(body)
-                .build()
+                    .url(API_URL)
+                    .addHeader("x-api-key", apiKey)
+                    .post(body)
+                    .build()
                 val resp = client.newCall(req).execute()
                 val text = resp.body?.string() ?: "[empty]"
                 runOnUiThread { resultView.text = text }
@@ -191,3 +191,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
